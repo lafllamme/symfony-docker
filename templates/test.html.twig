@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome to Symfony!</title>
+
+</head>
+<body>
+<h1>Test</h1>
+
+Testdata...
+
+<form method="POST" action="/test" >
+    {{ form_start(form) }}
+
+    {{ form_row(form.shipping) }} {# Render the shipping field from ShippingType #}
+
+    {# Add other form fields as needed #}
+
+    <button type="submit">Submit</button>
+    {{ form_end(form) }}
+</form>
+
+{# ... #}
+</body>
+</html>
+

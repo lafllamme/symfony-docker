@@ -1,0 +1,55 @@
+{# templates/form/signature_widget.html.twig #}
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>
+    <title>Signature</title>
+</head>
+<body>
+
+{# ... render other form fields, including the signature field ... #}
+
+
+{% block content %}
+    <h1>Signature Form</h1>
+
+    {{ form_start(form) }}
+
+    {{ form_row(form.signature.signature_data) }}
+
+    {{ form_end(form) }}
+{% endblock %}
+
+<div id="signature-container">
+    <canvas id="signature-pad" width="400" height="200"></canvas>
+    <button id="clear-button">Clear</button>
+    <button id="submit-button" type="submit">Submit</button>
+</div>
+
+{% if form.signature.signature_data is not empty %}
+    <img src="{{ form.signature.signature_data }}" alt="Signature">
+{% endif %}
+
+
+<script>
+    // Include the signature_pad library or any other signature capture library you prefer.
+
+    var canvas = document.getElementById('signature-pad');
+    var signaturePad = new SignaturePad(canvas);
+
+    document.getElementById('clear-button').addEventListener('click', function () {
+        signaturePad.clear();
+    });
+
+    document.getElementById('submit-button').addEventListener('click', function () {
+        // Add logic here to save the signature data to the hidden input field
+        var signatureData = signaturePad.toDataURL();
+        document.getElementById('signature_form_signature_signature_data').src = signatureData;
+        document.getElementById('signature_form_signature_signature_data').value = signatureData;
+
+        console.log(signatureData);
+    });
+
+</script>
+</body>
+</html>
