@@ -8,5 +8,5 @@
 /var/
 /vendor/
 /node_modules/
-.github/workflows/ci.yml
+/.github/workflows/ci.yml
 ###< symfony/framework-bundle ###
